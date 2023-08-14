@@ -18,4 +18,16 @@ class Pokemon {
       imageUrl: json['sprites']['front_default'],
     );
   }
+
+  factory Pokemon.fromFirebaseJson(Map<String, dynamic> json) => Pokemon(
+        id: json['id'],
+        name: json['name'],
+        imageUrl: json['imageUrl'],
+      );
+
+  Map<String, Object?> toJson() => {
+        'id': id,
+        'name': name,
+        'imageUrl': imageUrl,
+      };
 }

@@ -24,6 +24,20 @@ class PokemonProvider extends ChangeNotifier {
     return _pokemon.firstWhere((element) => element.id == id);
   }
 
+  Future<void> updatePokemonFavoriteStatus(int id, bool value) async {
+    var db = FirebaseFirestore.instance;
+    await db.collection('pokemons').doc(id.toString()).update(
+      {'isFavorite': value},
+    );
+  }
+/*
+  Future<DocumentSnapshot<Map<String, dynamic>>> getPokemonDocument(
+      int id) async {
+    var db = FirebaseFirestore.instance;
+    return await db.collection('pokemons').doc(id.toString()).get();
+  }
+  */
+
   Future<bool> checkPokemons() async {
     if (_pokemon.isEmpty) {
       await _initPokemonList();
@@ -67,8 +81,9 @@ class PokemonProvider extends ChangeNotifier {
 
     final pokemonDocument = <String, dynamic>{
       //'id': pokemonData['id'],
-      //'name': pokemonData['name']
-      'additionalName': 'Test'
+      'name': pokemonData['name'],
+      'id': pokemonData['id'],
+      'imageUrl': pokemonData['sprites']['front_default']
     };
 
     var db = FirebaseFirestore.instance;

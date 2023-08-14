@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_mobile/providers/category_provider.dart';
 import 'package:pokedex_mobile/providers/pokemon_provider.dart';
 import 'package:pokedex_mobile/screens/pokemon_details.dart';
+import 'package:pokedex_mobile/screens/pokemon_favorite_list.dart';
 import 'package:pokedex_mobile/screens/pokemon_screen.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
@@ -54,7 +55,8 @@ class _MainWidgetState extends State<MainWidget> {
 
   final List<Widget> _mainWidgets = const [
     CategoryScreen(),
-    PokemonScreenWidget()
+    PokemonScreenWidget(),
+    PokemonFavoriteListScreen()
   ];
 
   void _onTapItem(int index) {
@@ -76,6 +78,10 @@ class _MainWidgetState extends State<MainWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.details),
             label: 'Pokemons',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favoritos',
           )
         ],
         currentIndex: _selectedIndex,
