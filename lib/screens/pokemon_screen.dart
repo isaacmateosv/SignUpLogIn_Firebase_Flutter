@@ -11,11 +11,22 @@ class PokemonScreenWidget extends StatefulWidget {
 }
 
 class _PokemonScreenWidgetState extends State<PokemonScreenWidget> {
+  bool isSearch = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokemons'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  isSearch = !isSearch;
+                });
+              },
+              icon: const Icon(Icons.search))
+        ],
+        title: !isSearch ? const Text('Pokemons') : const Text('Search...'),
       ),
       body: FutureBuilder(
         future: Provider.of<PokemonProvider>(context, listen: false)
