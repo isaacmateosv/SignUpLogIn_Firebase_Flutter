@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:pokedex_mobile/dtos/pokemon_model.dart';
 
 class PokemonProvider extends ChangeNotifier {
-  final List<Pokemon> _pokemon = [];
+  final List<Pokemon> _originalPokemons = [];
+  List<Pokemon> _pokemon = [];
 
   int get totalPokemons => _pokemon.length;
 
@@ -22,6 +23,18 @@ class PokemonProvider extends ChangeNotifier {
       }
     */
     return _pokemon.firstWhere((element) => element.id == id);
+  }
+
+  void clearSearch() {
+    _pokemon = [..._originalPokemons];
+    notifyListeners();
+  }
+
+  void searchPokemonsByName(String name) {
+    _pokemon = _originalPokemons
+        .where((element) => element.name.contains(name))
+        .toList();
+    notifyListeners();
   }
 
   Future<void> updatePokemonFavoriteStatus(int id, bool value) async {
@@ -88,6 +101,7 @@ class PokemonProvider extends ChangeNotifier {
         imageUrl: pokemonData['sprites']['front_default']);
     */
     _pokemon.add(Pokemon.fromJson(pokemonData));
+    _originalPokemons.add(Pokemon.fromJson(pokemonData));
 
     final pokemonDocument = <String, dynamic>{
       //'id': pokemonData['id'],

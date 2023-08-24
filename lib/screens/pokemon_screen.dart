@@ -12,6 +12,26 @@ class PokemonScreenWidget extends StatefulWidget {
 
 class _PokemonScreenWidgetState extends State<PokemonScreenWidget> {
   bool isSearch = false;
+  var textSearchController = TextEditingController();
+
+  @override
+  void initState() {
+    textSearchController.addListener(_searchPokemons);
+    super.initState();
+  }
+
+  _clearSearch() {
+    Provider.of<PokemonProvider>(context, listen: false).clearSearch();
+  }
+
+  _searchPokemons() {
+    if (textSearchController.text.isNotEmpty) {
+      Provider.of<PokemonProvider>(context, listen: false)
+          .searchPokemonsByName(textSearchController.text);
+    } else {
+      _clearSearch();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +42,27 @@ class _PokemonScreenWidgetState extends State<PokemonScreenWidget> {
               onPressed: () {
                 setState(() {
                   isSearch = !isSearch;
+                  _clearSearch();
                 });
               },
               icon: const Icon(Icons.search))
         ],
-        title: !isSearch ? const Text('Pokemons') : const Text('Search...'),
+        title: !isSearch
+            ? const Text('Pokemons')
+            : TextField(
+                controller: textSearchController,
+                decoration: InputDecoration(
+                  hintText: 'Buscar',
+                  icon: const Icon(Icons.search),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      textSearchController.text = '';
+                      _clearSearch();
+                    },
+                    icon: const Icon(Icons.cancel),
+                  ),
+                ),
+              ),
       ),
       body: FutureBuilder(
         future: Provider.of<PokemonProvider>(context, listen: false)
