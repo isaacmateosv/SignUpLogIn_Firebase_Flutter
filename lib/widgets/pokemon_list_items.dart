@@ -42,7 +42,10 @@ class _PokemonListItemsState extends State<PokemonListItems> {
                 title: Text(
                   widget.pokemons[index].name,
                 ),
-                trailing: PokemonFavorite(id: widget.pokemons[index].id),
+                trailing: Transform.scale(
+                  scale: 0.5,
+                  child: PokemonFavorite(id: widget.pokemons[index].id),
+                ),
               ),
             ),
           ),

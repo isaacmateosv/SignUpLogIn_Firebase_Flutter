@@ -14,7 +14,13 @@ import 'package:pokedex_mobile/screens/category_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    name: 'Pokedex',
+    options: FirebaseOptions(
+      apiKey: 'AIzaSyB6jnm4Mb4Cy_5SKwr5KIk5T8dZQbWpnt8',
+      appId: '1:536853797187:web:17ad4acb45976baa66f7f6',
+      messagingSenderId: '536853797187',
+      projectId: 'pj-pokedex',
+    ),
   );
   runApp(const MyApp());
 }
@@ -32,7 +38,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Pokedex',
-        home: const MainWidget(),
+        // home: const MainWidget(),
         routes: {
           MainWidget.routeName: (context) => const MainWidget(),
           PokemonDetailsScreen.routeName: (context) =>
