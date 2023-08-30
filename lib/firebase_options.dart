@@ -44,40 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCv7MM_RhmY7Qc1yfvk71C-5LemhyP3DzM',
-    appId: '1:224013550733:web:59e66797f99b77827a4ec4',
-    messagingSenderId: '224013550733',
-    projectId: 'pokedex-flutter-cbf26',
-    authDomain: 'pokedex-flutter-cbf26.firebaseapp.com',
-    storageBucket: 'pokedex-flutter-cbf26.appspot.com',
-    measurementId: 'G-2T2E6WF60K',
+    apiKey: 'AIzaSyB6jnm4Mb4Cy_5SKwr5KIk5T8dZQbWpnt8',
+    appId: '1:536853797187:web:3a21cc21b0ccba7366f7f6',
+    messagingSenderId: '536853797187',
+    projectId: 'pj-pokedex',
+    authDomain: 'pj-pokedex.firebaseapp.com',
+    storageBucket: 'pj-pokedex.appspot.com',
+    measurementId: 'G-DZB1TQV66F',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAQclxpv4U6NWaHLInwFzfCBTL9dDIBxAc',
-    appId: '1:224013550733:android:5e892713488e51307a4ec4',
-    messagingSenderId: '224013550733',
-    projectId: 'pokedex-flutter-cbf26',
-    storageBucket: 'pokedex-flutter-cbf26.appspot.com',
+    apiKey: 'AIzaSyA30xwd_NsxjZlA6PacrOMzzGgLT89CM28',
+    appId: '1:536853797187:android:4bbf6b2f6b588be166f7f6',
+    messagingSenderId: '536853797187',
+    projectId: 'pj-pokedex',
+    storageBucket: 'pj-pokedex.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD7DhVNx48Uxa5LuiXXOmElmprWZ2kJLo4',
-    appId: '1:224013550733:ios:16b6abd056a48a507a4ec4',
-    messagingSenderId: '224013550733',
-    projectId: 'pokedex-flutter-cbf26',
-    storageBucket: 'pokedex-flutter-cbf26.appspot.com',
-    iosClientId: '224013550733-30c04m5s267n0a9qigucfb5lojjvrpqu.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAKWk0SzUmzmeNo0DriOBF7DNSxzQEH6E8',
+    appId: '1:536853797187:ios:9694549b1c48b56966f7f6',
+    messagingSenderId: '536853797187',
+    projectId: 'pj-pokedex',
+    storageBucket: 'pj-pokedex.appspot.com',
+    iosClientId: '536853797187-us0ikl76t0mjiet117ctleoeqree1bh5.apps.googleusercontent.com',
     iosBundleId: 'com.example.pokedexMobile',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD7DhVNx48Uxa5LuiXXOmElmprWZ2kJLo4',
-    appId: '1:224013550733:ios:caf6c0e2027320b27a4ec4',
-    messagingSenderId: '224013550733',
-    projectId: 'pokedex-flutter-cbf26',
-    storageBucket: 'pokedex-flutter-cbf26.appspot.com',
-    iosClientId: '224013550733-dj9ns5c2742q9o8gll0sehcmkatqdcr2.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAKWk0SzUmzmeNo0DriOBF7DNSxzQEH6E8',
+    appId: '1:536853797187:ios:ba50d91b3235752e66f7f6',
+    messagingSenderId: '536853797187',
+    projectId: 'pj-pokedex',
+    storageBucket: 'pj-pokedex.appspot.com',
+    iosClientId: '536853797187-lh8r9tc885v2j4qn3l1vtebhva0d4a93.apps.googleusercontent.com',
     iosBundleId: 'com.example.pokedexMobile.RunnerTests',
   );
 }

@@ -5,9 +5,11 @@ import 'package:pokedex_mobile/providers/pokemon_provider.dart';
 import 'package:pokedex_mobile/screens/pokemon_details.dart';
 import 'package:pokedex_mobile/screens/pokemon_favorite_list.dart';
 import 'package:pokedex_mobile/screens/pokemon_screen.dart';
+import 'package:pokedex_mobile/screens/login_screen.dart';
+import 'package:pokedex_mobile/screens/signup_screen.dart';
 import 'package:provider/provider.dart';
-import 'firebase_options.dart';
-import 'screens/category_screen.dart';
+import 'package:pokedex_mobile/providers/login_provider.dart';
+import 'package:pokedex_mobile/screens/category_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,33 +20,33 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => CategoryProvider()),
-          ChangeNotifierProvider(create: (context) => PokemonProvider()),
-        ],
-        child: MaterialApp(
-          title: 'Pokedex',
-          //home: new MainWidget(),
-          initialRoute: MainWidget.routeName,
-          routes: {
-            MainWidget.routeName: (context) => const MainWidget(),
-            PokemonDetailsScreen.routeName: (context) =>
-                const PokemonDetailsScreen()
-          },
-        ));
+      providers: [
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
+        ChangeNotifierProvider(create: (context) => PokemonProvider()),
+        ChangeNotifierProvider(create: (context) => LoginProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Pokedex',
+        home: const MainWidget(),
+        routes: {
+          MainWidget.routeName: (context) => const MainWidget(),
+          PokemonDetailsScreen.routeName: (context) =>
+              const PokemonDetailsScreen(),
+        },
+      ),
+    );
   }
 }
 
 class MainWidget extends StatefulWidget {
   static const routeName = '/';
 
-  const MainWidget({super.key});
+  const MainWidget({Key? key}) : super(key: key);
 
   @override
   State<MainWidget> createState() => _MainWidgetState();
@@ -56,7 +58,7 @@ class _MainWidgetState extends State<MainWidget> {
   final List<Widget> _mainWidgets = const [
     CategoryScreen(),
     PokemonScreenWidget(),
-    PokemonFavoriteListScreen()
+    PokemonFavoriteListScreen(),
   ];
 
   void _onTapItem(int index) {
@@ -73,7 +75,7 @@ class _MainWidgetState extends State<MainWidget> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
-            label: 'Categorias',
+            label: 'Categories',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.details),
@@ -81,8 +83,8 @@ class _MainWidgetState extends State<MainWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          )
+            label: 'Favorites',
+          ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onTapItem,
